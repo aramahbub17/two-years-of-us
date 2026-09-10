@@ -1,1 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Happy Anniversary 💗</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at center,
+                    #4b1831 0%,
+                    #210b17 45%,
+                    #070308 100%
+                );
+
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        /* Soft light */
+
+        .light {
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 120, 180, .12);
+
+            filter: blur(90px);
+
+            animation: lightPulse 4s ease-in-out infinite;
+        }
+
+        /* Main text */
+
+        .content {
+            text-align: center;
+
+            position: relative;
+            z-index: 2;
+
+            animation: contentReveal 2s ease forwards;
+        }
+
+        .date {
+            font-family: Arial, sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            color: rgba(255, 220, 235, .65);
+
+            margin-bottom: 25px;
+
+            opacity: 0;
+
+            animation: fadeUp 1.2s ease .4s forwards;
+        }
+
+        h1 {
+            font-size: clamp(48px, 9vw, 105px);
+
+            font-weight: 400;
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #f8d9e7,
+                    #ffffff,
+                    #eab0cc
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            opacity: 0;
+
+            animation:
+                titleReveal 1.8s cubic-bezier(.2,.8,.2,1)
+                .8s forwards;
+        }
+
+        .subtitle {
+            margin-top: 28px;
+
+            font-size: 15px;
+
+            letter-spacing: 3px;
+
+            color: rgba(255, 225, 238, .7);
+
+            opacity: 0;
+
+            animation: fadeUp 1.3s ease 1.6s forwards;
+        }
+
+        /* Floating hearts */
+
+        .heart {
+            position: absolute;
+
+            font-size: 15px;
+
+            opacity: 0;
+
+            animation: floatHeart 4s ease-in-out infinite;
+        }
+
+        .heart1 {
+            left: 15%;
+            top: 25%;
+            animation-delay: .5s;
+        }
+
+        .heart2 {
+            right: 16%;
+            top: 30%;
+            animation-delay: 1.4s;
+        }
+
+        .heart3 {
+            left: 25%;
+            bottom: 22%;
+            animation-delay: 2s;
+        }
+
+        .heart4 {
+            right: 25%;
+            bottom: 25%;
+            animation-delay: 2.7s;
+        }
+
+        /* Animations */
+
+        @keyframes contentReveal {
+
+            from {
+                transform: scale(.92);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes titleReveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px) scale(.95);
+                filter: blur(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lightPulse {
+
+            0%,100% {
+                transform: scale(.9);
+                opacity: .6;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                opacity: 0;
+                transform: translateY(25px) scale(.7);
+            }
+
+            30% {
+                opacity: .7;
+            }
+
+            70% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-35px) scale(1.1);
+            }
+        }
+
+        /* Mobile */
+
+        @media(max-width:600px) {
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+            .date {
+                letter-spacing: 4px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="screen">
+
+        <div class="light"></div>
+
+        <div class="heart heart1">♡</div>
+        <div class="heart heart2">♡</div>
+        <div class="heart heart3">♡</div>
+        <div class="heart heart4">♡</div>
+
+        <div class="content">
+
+            <div class="date">
+                09 · 10 · 2026
+            </div>
+
+            <h1>
+                Happy<br>
+                Anniversary
+            </h1>
+
+            <div class="subtitle">
+                Two years of us
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* Automatically continue after 3.8 seconds */
+
+        setTimeout(() => {
+
+            document.body.style.transition =
+                "opacity 1.1s ease, transform 1.1s ease";
+
+            document.body.style.opacity = "0";
+            document.body.style.transform =
+                "translateY(-45px)";
+
+            setTimeout(() => {
+
+                window.location.href = "lilies.html";
+
+            }, 1100);
+
+        }, 3800);
+
+    </script>
+
+</body>
+</html>
