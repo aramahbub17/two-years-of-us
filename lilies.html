@@ -7,20 +7,27 @@
     <title>For You 🌸</title>
 
     <style>
+
+        /* =========================
+           GLOBAL / SMOOTH SCROLL
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+
             background:
                 radial-gradient(
                     circle at 70% 40%,
@@ -31,16 +38,26 @@
 
             color: white;
             font-family: Georgia, serif;
+
+            -webkit-overflow-scrolling: touch;
         }
+
+        /* =========================
+           MAIN SCENE
+        ========================== */
 
         .scene {
             position: relative;
+
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+
             overflow: hidden;
         }
 
-        /* Soft moon glow */
+        /* =========================
+           MOON GLOW
+        ========================== */
 
         .moon {
             position: absolute;
@@ -61,9 +78,13 @@
                 );
 
             filter: blur(8px);
+
+            pointer-events: none;
         }
 
-        /* Stars */
+        /* =========================
+           STARS
+        ========================== */
 
         .star {
             position: absolute;
@@ -75,7 +96,10 @@
 
             background: rgba(255,255,255,.75);
 
-            animation: twinkle 2s ease-in-out infinite;
+            animation:
+                twinkle 2s ease-in-out infinite;
+
+            pointer-events: none;
         }
 
         .s1 {
@@ -86,28 +110,34 @@
         .s2 {
             left: 42%;
             top: 12%;
+
             animation-delay: .5s;
         }
 
         .s3 {
             right: 22%;
             top: 20%;
+
             animation-delay: 1s;
         }
 
         .s4 {
             right: 10%;
             top: 45%;
+
             animation-delay: 1.5s;
         }
 
         .s5 {
             left: 55%;
             top: 28%;
+
             animation-delay: .8s;
         }
 
-        /* Text */
+        /* =========================
+           MESSAGE
+        ========================== */
 
         .message {
             position: absolute;
@@ -169,7 +199,8 @@
             width: 55px;
             height: 1px;
 
-            background: rgba(255,200,220,.5);
+            background:
+                rgba(255,200,220,.5);
 
             margin-bottom: 22px;
         }
@@ -179,12 +210,15 @@
 
             line-height: 1.8;
 
-            color: rgba(255,230,240,.72);
+            color:
+                rgba(255,230,240,.72);
 
             max-width: 330px;
         }
 
-        /* Lily Garden */
+        /* =========================
+           LILY GARDEN
+        ========================== */
 
         .garden {
             position: absolute;
@@ -198,7 +232,9 @@
             z-index: 5;
         }
 
-        /* Ground */
+        /* =========================
+           GROUND
+        ========================== */
 
         .ground {
             position: absolute;
@@ -219,664 +255,5 @@
             filter: blur(12px);
         }
 
-        /* Flowers */
-
-        .flower {
-            position: absolute;
-
-            bottom: 0;
-
-            width: 70px;
-            height: 90%;
-
-            transform-origin: bottom center;
-
-            animation:
-                stemGrow 2s cubic-bezier(.2,.8,.2,1)
-                forwards;
-
-            transform: scaleY(0);
-        }
-
-        .flower:nth-child(1) {
-            left: 8%;
-            height: 65%;
-            animation-delay: .2s;
-        }
-
-        .flower:nth-child(2) {
-            left: 22%;
-            height: 78%;
-            animation-delay: .45s;
-        }
-
-        .flower:nth-child(3) {
-            left: 38%;
-            height: 92%;
-            animation-delay: .7s;
-        }
-
-        .flower:nth-child(4) {
-            left: 55%;
-            height: 75%;
-            animation-delay: .9s;
-        }
-
-        .flower:nth-child(5) {
-            left: 70%;
-            height: 62%;
-            animation-delay: 1.1s;
-        }
-
-        .flower:nth-child(6) {
-            left: 83%;
-            height: 72%;
-            animation-delay: 1.3s;
-        }
-
-        /* Stems */
-
-        .stem {
-            position: absolute;
-
-            bottom: 0;
-            left: 50%;
-
-            width: 3px;
-            height: 82%;
-
-            transform: translateX(-50%);
-
-            background:
-                linear-gradient(
-                    to top,
-                    #25472f,
-                    #6e9a69
-                );
-
-            border-radius: 5px;
-        }
-
-        /* Leaves */
-
-        .leaf {
-            position: absolute;
-
-            width: 30px;
-            height: 13px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #294d35,
-                    #70976d
-                );
-
-            border-radius:
-                100% 0 100% 0;
-
-            opacity: 0;
-
-            animation:
-                leafAppear .7s ease 2s forwards;
-        }
-
-        .leaf.left {
-            left: calc(50% - 29px);
-            bottom: 34%;
-
-            transform: rotate(-25deg);
-        }
-
-        .leaf.right {
-            left: calc(50% + 1px);
-            bottom: 50%;
-
-            transform: rotate(205deg);
-        }
-
-        /* Lily */
-
-        .lily {
-            position: absolute;
-
-            left: 50%;
-            top: 4%;
-
-            width: 72px;
-            height: 65px;
-
-            transform:
-                translateX(-50%)
-                scale(.1);
-
-            opacity: 0;
-
-            animation:
-                bloom 1.2s cubic-bezier(.2,.8,.2,1)
-                forwards;
-        }
-
-        .flower:nth-child(1) .lily {
-            animation-delay: 2.4s;
-        }
-
-        .flower:nth-child(2) .lily {
-            animation-delay: 2.55s;
-        }
-
-        .flower:nth-child(3) .lily {
-            animation-delay: 2.7s;
-        }
-
-        .flower:nth-child(4) .lily {
-            animation-delay: 2.85s;
-        }
-
-        .flower:nth-child(5) .lily {
-            animation-delay: 3s;
-        }
-
-        .flower:nth-child(6) .lily {
-            animation-delay: 3.15s;
-        }
-
-        /* Lily petals */
-
-        .petal {
-            position: absolute;
-
-            width: 30px;
-            height: 55px;
-
-            left: 21px;
-            top: 4px;
-
-            background:
-                linear-gradient(
-                    160deg,
-                    #fff,
-                    #f1bcd5
-                );
-
-            border-radius:
-                70% 70% 45% 45%;
-
-            transform-origin:
-                50% 90%;
-
-            box-shadow:
-                0 0 15px rgba(255,190,220,.25);
-        }
-
-        .p1 {
-            transform: rotate(0deg);
-        }
-
-        .p2 {
-            transform: rotate(60deg);
-        }
-
-        .p3 {
-            transform: rotate(120deg);
-        }
-
-        .p4 {
-            transform: rotate(180deg);
-        }
-
-        .p5 {
-            transform: rotate(240deg);
-        }
-
-        .p6 {
-            transform: rotate(300deg);
-        }
-
-        .center {
-            position: absolute;
-
-            width: 12px;
-            height: 12px;
-
-            left: 30px;
-            top: 29px;
-
-            border-radius: 50%;
-
-            background: #d9a04f;
-
-            box-shadow:
-                0 0 12px rgba(255,200,100,.6);
-        }
-
-        /* Next Arrow */
-
-        .next {
-            position: absolute;
-
-            left: 30px;
-            bottom: 30px;
-
-            width: 55px;
-            height: 55px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid rgba(255,210,230,.35);
-
-            background:
-                rgba(255,255,255,.04);
-
-            color: #f8d9e7;
-
-            font-size: 24px;
-
-            cursor: pointer;
-
-            z-index: 20;
-
-            opacity: 0;
-
-            animation:
-                arrowIn 1s ease 4s forwards;
-
-            transition: .35s ease;
-        }
-
-        .next:hover {
-            transform: translateX(5px);
-
-            border-color:
-                rgba(255,200,225,.9);
-
-            box-shadow:
-                0 0 25px rgba(230,80,150,.25);
-        }
-
-        /* Animations */
-
-        @keyframes stemGrow {
-
-            from {
-                transform: scaleY(0);
-            }
-
-            to {
-                transform: scaleY(1);
-            }
-        }
-
-        @keyframes leafAppear {
-
-            from {
-                opacity: 0;
-                transform:
-                    scale(.4)
-                    rotate(-20deg);
-            }
-
-            to {
-                opacity: .9;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes bloom {
-
-            0% {
-                opacity: 0;
-
-                transform:
-                    translateX(-50%)
-                    scale(.1)
-                    rotate(-15deg);
-            }
-
-            70% {
-                opacity: 1;
-
-                transform:
-                    translateX(-50%)
-                    scale(1.08)
-                    rotate(3deg);
-            }
-
-            100% {
-                opacity: 1;
-
-                transform:
-                    translateX(-50%)
-                    scale(1)
-                    rotate(0);
-            }
-        }
-
-        @keyframes messageIn {
-
-            from {
-                opacity: 0;
-
-                transform:
-                    translateY(-50%)
-                    translateX(-35px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    translateY(-50%)
-                    translateX(0);
-            }
-        }
-
-        @keyframes arrowIn {
-
-            from {
-                opacity: 0;
-
-                transform:
-                    translateX(-15px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    translateX(0);
-            }
-        }
-
-        @keyframes twinkle {
-
-            0%, 100% {
-                opacity: .2;
-                transform: scale(.7);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-
-        /* Mobile */
-
-        @media(max-width:700px) {
-
-            .garden {
-                right: -5%;
-                width: 75%;
-                height: 65%;
-            }
-
-            .message {
-                left: 7%;
-                top: 25%;
-
-                width: 270px;
-            }
-
-            .message h1 {
-                font-size: 42px;
-            }
-
-            .message p {
-                font-size: 12px;
-                line-height: 1.6;
-            }
-
-            .flower {
-                width: 55px;
-            }
-
-            .lily {
-                transform:
-                    translateX(-50%)
-                    scale(.8);
-            }
-
-            .next {
-                left: 22px;
-                bottom: 22px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="scene">
-
-    <div class="moon"></div>
-
-    <!-- Stars -->
-
-    <div class="star s1"></div>
-    <div class="star s2"></div>
-    <div class="star s3"></div>
-    <div class="star s4"></div>
-    <div class="star s5"></div>
-
-
-    <!-- Message -->
-
-    <div class="message">
-
-        <div class="eyebrow">
-            For the one I choose
-        </div>
-
-        <h1>
-            Happy<br>
-            Anniversary
-        </h1>
-
-        <div class="line"></div>
-
-        <p>
-            Baby, you were everything I ever wanted.
-        </p>
-
-    </div>
-
-
-    <!-- Lily Garden -->
-
-    <div class="garden">
-
-        <!-- Flower 1 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Flower 2 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Flower 3 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Flower 4 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Flower 5 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Flower 6 -->
-
-        <div class="flower">
-
-            <div class="stem"></div>
-
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-
-            <div class="lily">
-
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-
-                <div class="center"></div>
-
-            </div>
-
-        </div>
-
-
-        <div class="ground"></div>
-
-    </div>
-
-
-    <!-- Arrow -->
-
-    <button
-        class="next"
-        onclick="goNext()"
-        aria-label="Next"
-    >
-        →
-    </button>
-
-</div>
-
-
-<script>
-
-    function goNext() {
-
-        document.body.style.transition =
-            "opacity 1s ease, transform 1s ease";
-
-        document.body.style.opacity = "0";
-
-        document.body.style.transform =
-            "translateY(-40px)";
-
-        setTimeout(() => {
-
-            window.location.href =
-                "memories.html";
-
-        }, 1000);
-
-    }
-
-</script>
-
-</body>
-</html>
+        /* =========================
+           FLOWERS
