@@ -1,111 +1,693 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oops 💔</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Try Again 💗</title>
+
 
     <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
+        html,
         body {
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+
             overflow: hidden;
 
+            position: fixed;
+
+            inset: 0;
+
+            overscroll-behavior: none;
+        }
+
+
+        /* =========================
+           BODY
+        ========================== */
+
+        body {
+
             display: flex;
+
             justify-content: center;
             align-items: center;
 
+            font-family: Georgia, serif;
+
+            color: #65324a;
+
             background:
+
                 radial-gradient(
-                    circle at center,
-                    #32111f,
-                    #10060c 60%,
-                    #050306
+                    circle at 50% 35%,
+                    #ffffff 0%,
+                    #fff7fa 25%,
+                    #ffe8f1 55%,
+                    #ffd1e2 78%,
+                    #f4adc9 100%
                 );
 
-            color: white;
-            font-family: Arial, sans-serif;
+            opacity: 0;
+
+            animation:
+                pageAppear
+                1s
+                ease
+                forwards;
+
+            touch-action: none;
+
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        .error {
+
+        /* =========================
+           GLOW
+        ========================== */
+
+        .glow {
+
+            position: fixed;
+
+            width: 380px;
+            height: 380px;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: #ffb1d0;
+
+            filter:
+                blur(100px);
+
+            opacity: .28;
+
+            pointer-events: none;
+
+            animation:
+                glowPulse
+                4s
+                ease-in-out
+                infinite;
+        }
+
+
+        .glow-small {
+
+            position: fixed;
+
+            width: 180px;
+            height: 180px;
+
+            top: 8%;
+            right: 5%;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            filter:
+                blur(65px);
+
+            opacity: .7;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           PETALS
+        ========================== */
+
+        .petal {
+
+            position: fixed;
+
+            width: 7px;
+            height: 11px;
+
+            border-radius:
+                100% 0 100% 0;
+
+            background:
+                rgba(255,255,255,.8);
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            animation:
+                petalFall
+                linear
+                infinite;
+        }
+
+
+        .p1 {
+
+            left: 8%;
+
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+
+        .p2 {
+
+            left: 25%;
+
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+
+        .p3 {
+
+            left: 68%;
+
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+
+        .p4 {
+
+            left: 88%;
+
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
+
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .card {
+
+            position: relative;
+
+            z-index: 5;
+
+            width:
+                min(88vw, 370px);
+
+            padding:
+                48px 28px 42px;
+
             text-align: center;
 
-            animation: appear 0.8s ease forwards;
+            border-radius: 32px;
+
+            background:
+                rgba(255,255,255,.48);
+
+            border:
+                1px solid
+                rgba(255,255,255,.85);
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
+
+            box-shadow:
+
+                0 25px 80px
+                rgba(150,60,100,.14),
+
+                inset
+                0 1px 0
+                rgba(255,255,255,.9);
+
+            opacity: 0;
+
+            transform:
+                translateY(30px)
+                scale(.94);
+
+            animation:
+                cardReveal
+                1.1s
+                cubic-bezier(.2,.8,.2,1)
+                .15s
+                forwards;
         }
+
+
+        /* =========================
+           HEART
+        ========================== */
+
+        .heart-wrap {
+
+            width: 86px;
+            height: 86px;
+
+            margin:
+                0 auto 27px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.72);
+
+            border:
+                1px solid
+                rgba(255,255,255,.9);
+
+            box-shadow:
+
+                0 12px 35px
+                rgba(210,80,135,.16);
+
+            animation:
+                heartFloat
+                2.2s
+                ease-in-out
+                infinite;
+        }
+
 
         .heart {
-            font-size: 55px;
-            margin-bottom: 25px;
 
-            animation: heartbeat 1.4s ease-in-out infinite;
+            font-size: 39px;
+
+            filter:
+                drop-shadow(
+                    0 4px 8px
+                    rgba(210,80,135,.18)
+                );
         }
+
+
+        /* =========================
+           SMALL TITLE
+        ========================== */
+
+        .small {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color:
+                rgba(100,45,70,.48);
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           HEADING
+        ========================== */
 
         h1 {
-            font-size: 25px;
-            font-weight: 400;
-            letter-spacing: 2px;
 
-            margin-bottom: 12px;
+            font-size:
+                clamp(25px, 7vw, 30px);
+
+            line-height: 1.2;
+
+            font-weight: 400;
+
+            color: #642f49;
+
+            margin-bottom: 17px;
         }
+
+
+        /* =========================
+           TEXT
+        ========================== */
 
         p {
-            color: rgba(255,255,255,.6);
-            font-size: 13px;
-            letter-spacing: 1px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            color:
+                rgba(100,45,70,.63);
         }
 
-        @keyframes appear {
+
+        /* =========================
+           DIVIDER
+        ========================== */
+
+        .divider {
+
+            width: 42px;
+
+            height: 1px;
+
+            margin:
+                24px auto 20px;
+
+            background:
+                rgba(170,80,120,.35);
+        }
+
+
+        /* =========================
+           RETURN TEXT
+        ========================== */
+
+        .return {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+
+            color:
+                rgba(100,45,70,.38);
+
+            animation:
+                softBlink
+                2s
+                ease-in-out
+                infinite;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================== */
+
+        @keyframes pageAppear {
 
             from {
                 opacity: 0;
-                transform: translateY(25px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        @keyframes heartbeat {
+
+        @keyframes cardReveal {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px)
+                    scale(.94);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        @keyframes heartFloat {
 
             0%,100% {
-                transform: scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
             }
 
             50% {
-                transform: scale(1.15);
+
+                transform:
+                    translateY(-5px)
+                    scale(1.06);
             }
         }
+
+
+        @keyframes glowPulse {
+
+            0%,100% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(.9);
+
+                opacity: .22;
+            }
+
+            50% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
+
+                opacity: .36;
+            }
+        }
+
+
+        @keyframes softBlink {
+
+            0%,100% {
+                opacity: .35;
+            }
+
+            50% {
+                opacity: .75;
+            }
+        }
+
+
+        @keyframes petalFall {
+
+            0% {
+
+                top: -20px;
+
+                transform:
+                    translateX(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: .75;
+            }
+
+            50% {
+
+                transform:
+                    translateX(35px)
+                    rotate(180deg);
+
+                opacity: .5;
+            }
+
+            100% {
+
+                top: 110vh;
+
+                transform:
+                    translateX(-25px)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media(max-width: 380px) {
+
+            .card {
+
+                padding:
+                    40px 23px 35px;
+
+                border-radius: 28px;
+            }
+
+
+            .heart-wrap {
+
+                width: 78px;
+                height: 78px;
+
+                margin-bottom: 23px;
+            }
+
+
+            .heart {
+
+                font-size: 35px;
+            }
+
+
+            h1 {
+
+                font-size: 24px;
+            }
+
+
+            p {
+
+                font-size: 11px;
+            }
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <div class="error">
 
-        <div class="heart">💔</div>
+    <!-- Background -->
 
-        <h1>Oops... Wrong PIN</h1>
+    <div class="glow"></div>
 
-        <p>Try again, Pakhiii </p>
+    <div class="glow-small"></div>
+
+
+    <!-- Falling petals -->
+
+    <div class="petal p1"></div>
+
+    <div class="petal p2"></div>
+
+    <div class="petal p3"></div>
+
+    <div class="petal p4"></div>
+
+
+    <!-- ERROR CARD -->
+
+    <div class="card">
+
+
+        <div class="heart-wrap">
+
+            <div class="heart">
+                💗
+            </div>
+
+        </div>
+
+
+        <div class="small">
+            Almost there
+        </div>
+
+
+        <h1>
+            Not quite, Pakhiii ♡
+        </h1>
+
+
+        <p>
+
+            Looks like you entered
+            <br>
+
+            the wrong little secret.
+
+            <br>
+
+            Don't worry,
+            try again. 💗
+
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <div class="return">
+            Try again in a moment...
+        </div>
+
 
     </div>
+
+
+    <!-- RETURN TO LOCK -->
 
     <script>
 
         setTimeout(() => {
 
-            window.location.href = "index.html";
+
+            document.body.style.transition =
+                "opacity 1s ease";
+
+
+            document.body.style.opacity =
+                "0";
+
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "index.html";
+
+            }, 1000);
+
 
         }, 3500);
 
     </script>
 
+
 </body>
+
 </html>
