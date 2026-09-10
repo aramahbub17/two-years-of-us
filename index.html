@@ -3,68 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>For you Pakhiii 💗</title>
-
+    <title>🔒</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div class="background">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+<div class="background">
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+</div>
+
+<div class="lock-screen">
+
+    <!-- Lock -->
+    <div class="lock">
+        <div class="shackle"></div>
+
+        <div class="lock-body">
+            <div class="keyhole"></div>
+        </div>
     </div>
 
-    <!-- Floating Hearts -->
-    <div class="hearts">
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
+    <!-- Number -->
+    <div class="pin-area">
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <input
+            id="pin"
+            type="password"
+            inputmode="numeric"
+            maxlength="6"
+            autocomplete="off"
+        >
+
     </div>
 
-    <!-- Main Card -->
-    <main class="intro">
+    <!-- Enter -->
+    <button id="enter">ENTER</button>
 
-        <div class="heart">
-            💗
-        </div>
+</div>
 
-        <p class="small-text">A LITTLE SOMETHING FOR YOU</p>
-
-        <h1>
-            For you <span>Pakhiii</span>
-        </h1>
-
-        <p class="story">
-            Two years ago,<br>
-            our story began...
-        </p>
-
-        <div class="date">
-            <span>09</span>
-            <i>•</i>
-            <span>10</span>
-            <i>•</i>
-            <span>2024</span>
-        </div>
-
-        <button id="enterBtn">
-            <span>Unlock Our Story</span>
-            <b>→</b>
-        </button>
-
-        <p class="bottom-text">
-            2 YEARS • 1 STORY • US
-        </p>
-
-    </main>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
