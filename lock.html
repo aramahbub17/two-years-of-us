@@ -15,52 +15,32 @@
 
     <style>
 
-        /* =========================
-           RESET
-        ========================== */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-
-        /* =========================
-           FULLY FIXED SCREEN
-        ========================== */
-
         html,
         body {
             width: 100%;
             height: 100%;
-
             margin: 0;
             padding: 0;
-
             overflow: hidden;
-
             position: fixed;
-
             inset: 0;
-
             overscroll-behavior: none;
         }
 
-
         body {
-
             display: flex;
-
             justify-content: center;
             align-items: center;
-
             font-family: Arial, sans-serif;
-
             color: #642f49;
 
             background:
-
                 radial-gradient(
                     circle at 50% 30%,
                     #ffffff 0%,
@@ -78,148 +58,87 @@
             -webkit-touch-callout: none;
         }
 
-
-        /* =========================
-           BACKGROUND GLOWS
-        ========================== */
-
         .glow {
-
             position: fixed;
-
             border-radius: 50%;
-
             pointer-events: none;
-
             filter: blur(75px);
-
             z-index: 0;
         }
 
-
         .glow.one {
-
             width: 330px;
             height: 330px;
-
             top: -130px;
             left: -110px;
-
             background: #ffffff;
-
             opacity: .9;
         }
 
-
         .glow.two {
-
             width: 380px;
             height: 380px;
-
             right: -150px;
             bottom: -150px;
-
             background: #f58eb9;
-
             opacity: .38;
         }
 
-
         .glow.three {
-
             width: 220px;
             height: 220px;
-
             left: 50%;
             top: 50%;
-
             transform: translate(-50%, -50%);
-
             background: #ffffff;
-
             opacity: .35;
-
             filter: blur(100px);
         }
 
-
-        /* =========================
-           FLOATING PETALS
-        ========================== */
-
         .petal {
-
             position: fixed;
-
             width: 7px;
             height: 11px;
-
-            border-radius:
-                100% 0 100% 0;
-
-            background:
-                rgba(255,255,255,.75);
-
+            border-radius: 100% 0 100% 0;
+            background: rgba(255,255,255,.75);
             pointer-events: none;
-
             opacity: 0;
-
-            animation:
-                floatingPetal
-                linear infinite;
+            animation: floatingPetal linear infinite;
         }
 
-
         .petal.one {
-
             left: 12%;
             top: 10%;
-
             animation-duration: 7s;
         }
 
-
         .petal.two {
-
             left: 82%;
             top: 5%;
-
             animation-duration: 9s;
-
             animation-delay: 2s;
         }
 
-
         .petal.three {
-
             left: 25%;
             top: 35%;
-
             animation-duration: 8s;
-
             animation-delay: 1s;
         }
 
-
         .petal.four {
-
             left: 75%;
             top: 45%;
-
             animation-duration: 10s;
-
             animation-delay: 3s;
         }
-
 
         @keyframes floatingPetal {
 
             0% {
-
                 transform:
                     translateY(-30px)
                     rotate(0deg);
-
                 opacity: 0;
             }
 
@@ -228,68 +147,42 @@
             }
 
             50% {
-
                 transform:
                     translateY(45vh)
                     translateX(25px)
                     rotate(180deg);
-
                 opacity: .45;
             }
 
             100% {
-
                 transform:
                     translateY(110vh)
                     translateX(-20px)
                     rotate(360deg);
-
                 opacity: 0;
             }
         }
 
-
-        /* =========================
-           LOCK SCREEN
-        ========================== */
-
         .lock-screen {
-
             position: fixed;
-
             inset: 0;
-
             width: 100%;
             height: 100dvh;
 
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
             align-items: center;
 
-            padding:
-                20px;
-
+            padding: 20px;
             overflow: hidden;
-
             z-index: 10;
         }
 
-
-        /* =========================
-           LOCK
-        ========================== */
-
         .lock {
-
             position: relative;
-
             width: 82px;
             height: 98px;
-
             margin-bottom: 24px;
 
             filter:
@@ -305,14 +198,10 @@
                 infinite;
         }
 
-
         .shackle {
-
             position: absolute;
-
             width: 44px;
             height: 49px;
-
             left: 19px;
             top: 0;
 
@@ -326,21 +215,16 @@
                 25px 25px 0 0;
         }
 
-
         .lock-body {
-
             position: absolute;
-
             width: 70px;
             height: 57px;
-
             left: 6px;
             bottom: 0;
 
             border-radius: 13px;
 
             background:
-
                 linear-gradient(
                     145deg,
                     #ffffff,
@@ -352,7 +236,6 @@
                 rgba(180,85,125,.25);
 
             box-shadow:
-
                 0 12px 30px
                 rgba(180,70,120,.18),
 
@@ -361,29 +244,21 @@
                 rgba(255,255,255,.9);
         }
 
-
         .keyhole {
-
             position: absolute;
-
             width: 9px;
             height: 18px;
-
             left: 30px;
             top: 22px;
 
             background: #9b5273;
-
             border-radius: 8px;
         }
 
-
         .keyhole::before {
-
             content: "";
 
             position: absolute;
-
             width: 14px;
             height: 14px;
 
@@ -391,70 +266,40 @@
             top: -5px;
 
             border-radius: 50%;
-
             background: #9b5273;
         }
-
 
         @keyframes lockFloat {
 
             0%,100% {
-
-                transform:
-                    translateY(0);
+                transform: translateY(0);
             }
 
             50% {
-
-                transform:
-                    translateY(-7px);
+                transform: translateY(-7px);
             }
         }
 
-
-        /* =========================
-           HINT
-        ========================== */
-
         .hint {
-
             font-size: 9px;
-
             letter-spacing: 4px;
-
             text-transform: uppercase;
-
-            color:
-                rgba(100,45,70,.48);
-
+            color: rgba(100,45,70,.48);
             margin-bottom: 16px;
         }
 
-
-        /* =========================
-           PIN DOTS
-        ========================== */
-
         .dots {
-
             display: flex;
-
             justify-content: center;
             align-items: center;
-
             gap: 13px;
-
             height: 20px;
-
             margin-bottom: 23px;
         }
 
-
         .dot {
-
             width: 9px;
             height: 9px;
-
             border-radius: 50%;
 
             background:
@@ -464,34 +309,21 @@
                 1px solid
                 #d68aaa;
 
-            transition:
-                .25s ease;
+            transition: .25s ease;
         }
 
-
         .dot.active {
-
-            background:
-                #d65b90;
-
-            border-color:
-                #d65b90;
+            background: #d65b90;
+            border-color: #d65b90;
 
             box-shadow:
                 0 0 13px
                 rgba(214,91,144,.6);
 
-            transform:
-                scale(1.18);
+            transform: scale(1.18);
         }
 
-
-        /* =========================
-           KEYPAD
-        ========================== */
-
         .keypad {
-
             width: min(280px, 85vw);
 
             display: grid;
@@ -502,11 +334,8 @@
             gap: 10px;
         }
 
-
         .key {
-
             height: 55px;
-
             border-radius: 17px;
 
             border:
@@ -516,20 +345,14 @@
             background:
                 rgba(255,255,255,.62);
 
-            backdrop-filter:
-                blur(15px);
-
-            -webkit-backdrop-filter:
-                blur(15px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
 
             color: #6d304e;
-
             font-size: 17px;
-
             cursor: pointer;
 
             box-shadow:
-
                 0 7px 20px
                 rgba(170,70,110,.08);
 
@@ -539,42 +362,28 @@
                 box-shadow .2s ease;
         }
 
-
         .key:hover {
-
             background:
                 rgba(255,255,255,.9);
 
             box-shadow:
-
                 0 10px 25px
                 rgba(170,70,110,.13);
         }
 
-
         .key:active {
-
-            transform:
-                scale(.91);
+            transform: scale(.91);
         }
 
-
-        /* ENTER */
-
         .key.enter {
-
             border: none;
-
             color: white;
 
             font-size: 9px;
-
             font-weight: 600;
-
             letter-spacing: 2px;
 
             background:
-
                 linear-gradient(
                     135deg,
                     #e48bad,
@@ -582,137 +391,91 @@
                 );
 
             box-shadow:
-
                 0 8px 22px
                 rgba(195,75,125,.25);
         }
 
-
-        /* DELETE */
-
         .key.delete {
-
             font-size: 20px;
-
             color: #a65578;
 
             background:
                 rgba(255,255,255,.5);
         }
 
-
-        /* =========================
-           BOTTOM TEXT
-        ========================== */
-
         .private {
-
             margin-top: 18px;
 
             font-size: 8px;
-
             letter-spacing: 2.5px;
-
             text-transform: uppercase;
 
             color:
                 rgba(100,45,70,.35);
         }
 
-
-        /* =========================
-           WRONG PIN SHAKE
-        ========================== */
-
         .shake {
-
             animation:
                 shake
                 .35s
                 ease;
         }
 
-
         @keyframes shake {
 
             0%,100% {
-                transform:
-                    translateX(0);
+                transform: translateX(0);
             }
 
             25% {
-                transform:
-                    translateX(-8px);
+                transform: translateX(-8px);
             }
 
             75% {
-                transform:
-                    translateX(8px);
+                transform: translateX(8px);
             }
         }
-
-
-        /* =========================
-           SMALL HEIGHT DEVICES
-        ========================== */
 
         @media(max-height: 680px) {
 
             .lock {
-
-                transform:
-                    scale(.78);
-
+                transform: scale(.78);
                 margin-bottom: 8px;
             }
 
             .hint {
-
                 margin-bottom: 9px;
             }
 
             .dots {
-
                 margin-bottom: 13px;
             }
 
             .keypad {
-
                 gap: 7px;
             }
 
             .key {
-
                 height: 45px;
-
                 border-radius: 14px;
             }
 
             .private {
-
                 margin-top: 10px;
             }
         }
 
-
-        /* =========================
-           VERY SMALL MOBILE
-        ========================== */
-
         @media(max-width: 350px) {
 
             .keypad {
-
                 width: 250px;
             }
 
             .key {
-
                 height: 50px;
             }
 
             .dots {
-
                 gap: 11px;
             }
         }
@@ -725,35 +488,21 @@
 <body>
 
 
-    <!-- Background -->
-
     <div class="glow one"></div>
-
     <div class="glow two"></div>
-
     <div class="glow three"></div>
 
 
-    <!-- Floating petals -->
-
     <div class="petal one"></div>
-
     <div class="petal two"></div>
-
     <div class="petal three"></div>
-
     <div class="petal four"></div>
 
-
-    <!-- LOCK SCREEN -->
 
     <main
         class="lock-screen"
         id="lockScreen"
     >
-
-
-        <!-- Lock -->
 
         <div class="lock">
 
@@ -768,33 +517,22 @@
         </div>
 
 
-        <!-- Hint -->
-
         <div class="hint">
             A little secret
         </div>
 
 
-        <!-- PIN -->
-
         <div class="dots">
 
             <span class="dot"></span>
-
             <span class="dot"></span>
-
             <span class="dot"></span>
-
             <span class="dot"></span>
-
             <span class="dot"></span>
-
             <span class="dot"></span>
 
         </div>
 
-
-        <!-- KEYPAD -->
 
         <div class="keypad">
 
@@ -912,11 +650,9 @@
            PIN SYSTEM
         ========================== */
 
-        const correctPIN =
-            "091721";
+        const correctPIN = "091721";
 
-        let enteredPIN =
-            "";
+        let enteredPIN = "";
 
 
         const dots =
@@ -937,10 +673,7 @@
                 return;
             }
 
-
-            enteredPIN +=
-                number;
-
+            enteredPIN += number;
 
             updateDots();
 
@@ -955,7 +688,6 @@
 
             enteredPIN =
                 enteredPIN.slice(0, -1);
-
 
             updateDots();
 
@@ -1000,24 +732,45 @@
 
         function checkPIN() {
 
-
             if (
                 enteredPIN ===
                 correctPIN
             ) {
 
+                /*
+                 * START MUSIC
+                 * The audio is controlled
+                 * by the parent index.html.
+                 */
+
+                if (
+                    window.parent &&
+                    window.parent !== window &&
+                    typeof window.parent.startMusic === "function"
+                ) {
+
+                    window.parent.startMusic();
+
+                }
+
+
+                /*
+                 * Fade out lock screen
+                 */
 
                 document.body.style.transition =
                     "opacity 1s ease, transform 1s ease";
 
-
                 document.body.style.opacity =
                     "0";
-
 
                 document.body.style.transform =
                     "translateY(-30px)";
 
+
+                /*
+                 * Move to unlocked page
+                 */
 
                 setTimeout(() => {
 
@@ -1029,23 +782,24 @@
 
             } else {
 
-
-                /* Shake */
+                /*
+                 * Wrong PIN shake
+                 */
 
                 lockScreen.classList.remove(
                     "shake"
                 );
 
-
                 void lockScreen.offsetWidth;
-
 
                 lockScreen.classList.add(
                     "shake"
                 );
 
 
-                /* Wrong PIN page */
+                /*
+                 * Go to error page
+                 */
 
                 setTimeout(() => {
 
