@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>For Fariha 💗</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            inset: 0;
+            background: #fff5f9;
+        }
+
+        #page {
+            position: fixed;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: none;
+
+            display: block;
+        }
+
+        #music {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND MUSIC
+    ========================== -->
+
+    <audio
+        id="music"
+        src="every-breath-you-take-instrumental.mp3"
+        preload="auto"
+        loop
+    ></audio>
+
+
+    <!-- =========================
+         WEBSITE PAGES
+    ========================== -->
+
+    <iframe
+        id="page"
+        src="lock.html"
+        allow="autoplay"
+    ></iframe>
+
+
+    <script>
+
+        const music =
+            document.getElementById("music");
+
+
+        /*
+            Volume
+            0.55 = 55%
+        */
+
+        music.volume = 0.55;
+
+
+        /*
+            This function is called
+            when the correct PIN is entered.
+        */
+
+        window.startMusic = function () {
+
+            if (music.paused) {
+
+                music.play()
+                    .then(() => {
+
+                        console.log(
+                            "Music started"
+                        );
+
+                    })
+                    .catch((error) => {
+
+                        console.log(
+                            "Music could not start:",
+                            error
+                        );
+
+                    });
+
+            }
+
+        };
+
+
+        /*
+            Keep music alive even when
+            the iframe changes pages.
+        */
+
+        window.getMusicTime = function () {
+
+            return music.currentTime;
+
+        };
+
+
+        /*
+            Optional volume control
+        */
+
+        window.setMusicVolume = function (
+            volume
+        ) {
+
+            music.volume = volume;
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
