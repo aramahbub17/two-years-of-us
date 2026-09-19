@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
     <title>A Little Surprise 💗</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -17,19 +22,42 @@
         body {
             position: fixed;
             inset: 0;
+
             width: 100%;
             height: 100%;
+
             overflow: hidden;
             overscroll-behavior: none;
         }
 
         body {
             font-family: "Times New Roman", Times, serif;
+
             background:
-                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.95), transparent 32%),
-                radial-gradient(circle at 80% 25%, rgba(255,190,225,0.55), transparent 35%),
-                radial-gradient(circle at 50% 100%, rgba(205,180,255,0.55), transparent 45%),
-                linear-gradient(135deg, #f8efff, #fff5fa, #eee5ff);
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 255, 255, 0.95),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 80% 25%,
+                    rgba(255, 190, 225, 0.55),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(205, 180, 255, 0.55),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #f8efff,
+                    #fff5fa,
+                    #eee5ff
+                );
 
             display: flex;
             justify-content: center;
@@ -38,32 +66,61 @@
             color: #4c3857;
         }
 
-        /* Soft floating glow */
+
+        /* =========================
+           BACKGROUND GLOW
+        ========================= */
+
         .glow {
             position: absolute;
+
             width: 280px;
             height: 280px;
+
             border-radius: 50%;
+
             background: rgba(255, 180, 220, 0.25);
+
             filter: blur(60px);
+
             top: -100px;
             left: -80px;
-            animation: floatGlow 6s ease-in-out infinite alternate;
+
+            animation:
+                floatGlow
+                6s
+                ease-in-out
+                infinite
+                alternate;
         }
+
 
         .glow2 {
             position: absolute;
+
             width: 300px;
             height: 300px;
+
             border-radius: 50%;
+
             background: rgba(190, 160, 255, 0.25);
+
             filter: blur(70px);
+
             bottom: -120px;
             right: -100px;
-            animation: floatGlow2 7s ease-in-out infinite alternate;
+
+            animation:
+                floatGlow2
+                7s
+                ease-in-out
+                infinite
+                alternate;
         }
 
+
         @keyframes floatGlow {
+
             from {
                 transform: translate(0, 0);
             }
@@ -71,9 +128,12 @@
             to {
                 transform: translate(35px, 25px);
             }
+
         }
 
+
         @keyframes floatGlow2 {
+
             from {
                 transform: translate(0, 0);
             }
@@ -81,189 +141,340 @@
             to {
                 transform: translate(-30px, -25px);
             }
+
         }
 
-        /* Main card */
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
         .card {
             position: relative;
             z-index: 5;
 
             width: min(430px, 90vw);
+
             padding: 30px 22px 32px;
 
             border-radius: 32px;
 
             background: rgba(255, 255, 255, 0.62);
-            border: 1px solid rgba(255, 255, 255, 0.85);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.85);
 
             box-shadow:
-                0 25px 60px rgba(93, 65, 110, 0.16),
-                inset 0 1px 0 rgba(255, 255, 255, 0.95);
+                0 25px 60px
+                rgba(93, 65, 110, 0.16),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.95);
 
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
 
             text-align: center;
 
-            animation: cardIn 1s ease forwards;
+            animation:
+                cardIn
+                1s
+                ease
+                forwards;
         }
 
+
         @keyframes cardIn {
+
             from {
                 opacity: 0;
-                transform: translateY(25px) scale(0.96);
+
+                transform:
+                    translateY(25px)
+                    scale(0.96);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
             }
+
         }
 
-        /* Sticker background */
+
+        /* =========================
+           STICKER BACKGROUND
+        ========================= */
+
         .sticker-wrap {
+
             width: min(300px, 72vw);
+
             height: min(210px, 48vw);
 
-            margin: 0 auto 22px;
+            margin:
+                0 auto
+                22px;
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
             border-radius: 30px;
 
             background:
+
                 radial-gradient(
                     circle at 30% 25%,
-                    rgba(255,255,255,0.98),
-                    rgba(255,255,255,0.75) 45%,
+                    rgba(255, 255, 255, 0.98),
+                    rgba(255, 255, 255, 0.75) 45%,
                     transparent 70%
                 ),
+
                 linear-gradient(
                     145deg,
                     #fff8fc,
                     #f1e5ff
                 );
 
-            border: 1px solid rgba(255,255,255,0.95);
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.95);
 
             box-shadow:
-                0 18px 38px rgba(104, 72, 120, 0.15),
-                inset 0 1px 5px rgba(255,255,255,0.95);
+
+                0 18px 38px
+                rgba(104, 72, 120, 0.15),
+
+                inset 0 1px 5px
+                rgba(255, 255, 255, 0.95);
 
             overflow: hidden;
 
-            animation: stickerIn 1.1s ease 0.2s both;
+            animation:
+                stickerIn
+                1.1s
+                ease
+                0.2s
+                both;
         }
 
+
         @keyframes stickerIn {
+
             from {
                 opacity: 0;
-                transform: translateY(-15px) scale(0.85);
+
+                transform:
+                    translateY(-15px)
+                    scale(0.85);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
             }
+
         }
+
+
+        /* =========================
+           GIF
+        ========================= */
 
         .sticker {
+
             width: 88%;
             height: 88%;
+
             object-fit: contain;
 
-            filter: drop-shadow(
-                0 10px 12px rgba(70, 45, 80, 0.13)
-            );
+            filter:
+                drop-shadow(
+                    0 10px 12px
+                    rgba(70, 45, 80, 0.13)
+                );
 
-            animation: stickerFloat 3.5s ease-in-out infinite;
+            animation:
+                stickerFloat
+                3.5s
+                ease-in-out
+                infinite;
         }
 
+
         @keyframes stickerFloat {
+
             0%,
             100% {
-                transform: translateY(0) rotate(0deg);
+                transform:
+                    translateY(0)
+                    rotate(0deg);
             }
 
             50% {
-                transform: translateY(-7px) rotate(1deg);
+                transform:
+                    translateY(-7px)
+                    rotate(1deg);
             }
+
         }
 
-        /* Main text */
+
+        /* =========================
+           MAIN TITLE
+        ========================= */
+
         .title {
-            font-family: "Times New Roman", Times, serif;
-            font-size: clamp(30px, 8vw, 43px);
+
+            font-family:
+                "Times New Roman",
+                Times,
+                serif;
+
+            font-size:
+                clamp(
+                    30px,
+                    8vw,
+                    43px
+                );
+
             line-height: 1.08;
+
             font-weight: 700;
+
             color: #493451;
 
             margin-bottom: 14px;
 
-            animation: textIn 1s ease 0.35s both;
+            animation:
+                textIn
+                1s
+                ease
+                0.35s
+                both;
         }
+
 
         .title span {
             display: block;
         }
 
+
         @keyframes textIn {
+
             from {
                 opacity: 0;
-                transform: translateY(15px);
+
+                transform:
+                    translateY(15px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
+
         }
 
+
+        /* =========================
+           SUBTITLE
+        ========================= */
+
         .subtitle {
-            font-family: Georgia, "Times New Roman", serif;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
             font-size: 18px;
+
             color: #806b88;
 
             margin-bottom: 25px;
 
-            animation: textIn 1s ease 0.5s both;
+            animation:
+                textIn
+                1s
+                ease
+                0.5s
+                both;
         }
 
-        /* Buttons */
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
         .buttons {
+
             display: flex;
+
             justify-content: center;
             align-items: center;
+
             gap: 14px;
 
-            animation: buttonsIn 1s ease 0.65s both;
+            animation:
+                buttonsIn
+                1s
+                ease
+                0.65s
+                both;
         }
 
+
         @keyframes buttonsIn {
+
             from {
                 opacity: 0;
-                transform: translateY(15px);
+
+                transform:
+                    translateY(15px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
+
         }
 
+
         button {
+
             border: none;
             outline: none;
 
             min-width: 115px;
-            padding: 13px 27px;
+
+            padding:
+                13px
+                27px;
 
             border-radius: 999px;
 
-            font-family: Georgia, "Times New Roman", serif;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
             font-size: 16px;
+
             font-weight: 600;
 
             cursor: pointer;
@@ -273,150 +484,269 @@
                 box-shadow 0.25s ease;
         }
 
+
+        /* YES */
+
         .yes {
+
             color: white;
 
-            background: linear-gradient(
-                135deg,
-                #d986bd,
-                #a982d5
-            );
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #d986bd,
+                    #a982d5
+                );
 
             box-shadow:
-                0 10px 22px rgba(157, 105, 170, 0.28);
+
+                0 10px 22px
+                rgba(157, 105, 170, 0.28);
         }
+
+
+        /* NO */
 
         .no {
+
             color: #684d70;
 
-            background: rgba(255,255,255,0.85);
+            background:
+                rgba(255, 255, 255, 0.85);
 
-            border: 1px solid rgba(190,160,205,0.45);
+            border:
+                1px solid
+                rgba(190, 160, 205, 0.45);
 
             box-shadow:
-                0 8px 18px rgba(100,70,115,0.10);
+
+                0 8px 18px
+                rgba(100, 70, 115, 0.10);
         }
+
 
         button:hover {
-            transform: translateY(-3px);
+
+            transform:
+                translateY(-3px);
         }
+
 
         button:active {
-            transform: scale(0.94);
+
+            transform:
+                scale(0.94);
         }
 
-        /* Small decorative dots */
+
+        /* =========================
+           DECORATIVE DOTS
+        ========================= */
+
         .dot {
+
             position: absolute;
+
             width: 7px;
             height: 7px;
+
             border-radius: 50%;
-            background: rgba(190, 130, 200, 0.35);
-            animation: dotFloat 4s ease-in-out infinite;
+
+            background:
+                rgba(190, 130, 200, 0.35);
+
+            animation:
+                dotFloat
+                4s
+                ease-in-out
+                infinite;
         }
+
 
         .dot1 {
             top: 12%;
             left: 12%;
         }
 
+
         .dot2 {
             top: 20%;
             right: 14%;
+
             animation-delay: 1s;
         }
+
 
         .dot3 {
             bottom: 17%;
             left: 10%;
+
             animation-delay: 2s;
         }
+
 
         .dot4 {
             bottom: 12%;
             right: 13%;
+
             animation-delay: 0.5s;
         }
 
+
         @keyframes dotFloat {
+
             0%,
             100% {
-                transform: translateY(0);
+                transform:
+                    translateY(0);
+
                 opacity: 0.45;
             }
 
             50% {
-                transform: translateY(-12px);
+                transform:
+                    translateY(-12px);
+
                 opacity: 0.9;
             }
+
         }
 
-        /* Mobile */
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 480px) {
+
             .card {
+
                 width: 90vw;
-                padding: 25px 17px 28px;
+
+                padding:
+                    25px
+                    17px
+                    28px;
+
                 border-radius: 28px;
             }
 
+
             .sticker-wrap {
+
                 width: 75vw;
+
                 height: 46vw;
+
                 min-height: 160px;
+
                 max-height: 205px;
+
                 margin-bottom: 19px;
             }
 
+
             .title {
-                font-size: clamp(29px, 8.5vw, 38px);
+
+                font-size:
+                    clamp(
+                        29px,
+                        8.5vw,
+                        38px
+                    );
             }
 
+
             .subtitle {
+
                 font-size: 17px;
+
                 margin-bottom: 22px;
             }
 
+
             button {
+
                 min-width: 105px;
-                padding: 12px 23px;
+
+                padding:
+                    12px
+                    23px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+    <!-- Background -->
+
     <div class="glow"></div>
+
     <div class="glow2"></div>
 
+
+    <!-- Decorative dots -->
+
     <div class="dot dot1"></div>
+
     <div class="dot dot2"></div>
+
     <div class="dot dot3"></div>
+
     <div class="dot dot4"></div>
+
+
+    <!-- Main Card -->
 
     <main class="card">
 
-        <!-- Sticker with background -->
+
+        <!-- GIF Sticker -->
+
         <div class="sticker-wrap">
+
             <img
                 class="sticker"
-                src="surprise-cats.png"
+                src="surprise-cats.gif/surprise-cats"
                 alt="Cute cats"
             >
+
         </div>
 
-        <!-- Main writing -->
+
+        <!-- Main Writing -->
+
         <h1 class="title">
-            <span>I have a little</span>
-            <span>surprise for you.</span>
+
+            <span>
+                I have a little
+            </span>
+
+            <span>
+                surprise for you.
+            </span>
+
         </h1>
+
+
+        <!-- Subtitle -->
 
         <p class="subtitle">
             Wanna see it?
         </p>
 
+
         <!-- Buttons -->
+
         <div class="buttons">
+
 
             <button
                 class="yes"
@@ -425,6 +755,7 @@
                 YES 💗
             </button>
 
+
             <button
                 class="no"
                 onclick="goNo()"
@@ -432,19 +763,32 @@
                 NO
             </button>
 
+
         </div>
+
 
     </main>
 
+
     <script>
+
         function goYes() {
-            window.location.href = "anniversary.html";
+
+            window.location.href =
+                "anniversary.html";
+
         }
 
+
         function goNo() {
-            window.location.href = "no.html";
+
+            window.location.href =
+                "no.html";
+
         }
+
     </script>
+
 
 </body>
 </html>
