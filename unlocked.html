@@ -37,322 +37,434 @@
             background:
                 radial-gradient(
                     circle at 15% 15%,
-                    rgba(255, 205, 232, 0.85),
-                    transparent 35%
+                    rgba(255, 190, 225, 0.7),
+                    transparent 32%
                 ),
                 radial-gradient(
-                    circle at 85% 85%,
-                    rgba(211, 190, 255, 0.75),
-                    transparent 40%
+                    circle at 85% 25%,
+                    rgba(207, 185, 255, 0.65),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(255, 215, 240, 0.8),
+                    transparent 42%
                 ),
                 linear-gradient(
                     135deg,
-                    #fff8fc,
-                    #f3eaff,
-                    #ffeaf5
+                    #fffaff 0%,
+                    #f5edff 48%,
+                    #fff0f7 100%
                 );
 
             color: #30233d;
         }
 
-        body::before {
-            content: "";
-
+        .glow {
             position: fixed;
-
-            width: 420px;
-            height: 420px;
-
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-
-            background: rgba(255, 255, 255, 0.55);
-
-            filter: blur(80px);
-
-            top: -170px;
-            left: -140px;
-
+            filter: blur(75px);
+            opacity: 0.45;
             pointer-events: none;
         }
 
-        body::after {
-            content: "";
+        .glow.one {
+            background: #f7b9df;
+            top: -110px;
+            left: -100px;
+        }
 
+        .glow.two {
+            background: #cdb7ff;
+            bottom: -120px;
+            right: -100px;
+        }
+
+        .glow.three {
+            background: #ffffff;
+            width: 220px;
+            height: 220px;
+            top: 38%;
+            left: 45%;
+            opacity: 0.7;
+        }
+
+        .sparkle {
             position: fixed;
-
-            width: 380px;
-            height: 380px;
-
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
-
-            background: rgba(220, 195, 255, 0.45);
-
-            filter: blur(90px);
-
-            bottom: -160px;
-            right: -130px;
-
+            background: white;
+            box-shadow:
+                0 0 12px white,
+                0 0 22px rgba(238, 190, 255, 0.8);
+            opacity: 0.75;
             pointer-events: none;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .s1 {
+            top: 14%;
+            left: 16%;
+        }
+
+        .s2 {
+            top: 22%;
+            right: 17%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            bottom: 20%;
+            left: 12%;
+            animation-delay: 2s;
+        }
+
+        .s4 {
+            bottom: 15%;
+            right: 15%;
+            animation-delay: 3s;
         }
 
         .container {
-            width: min(90%, 430px);
-
-            text-align: center;
-
             position: relative;
-            z-index: 2;
+            z-index: 5;
+            width: min(92%, 440px);
+            text-align: center;
+            padding: 35px 24px 38px;
+            border-radius: 36px;
 
-            padding: 35px 25px 40px;
+            background: rgba(255, 255, 255, 0.25);
 
-            border-radius: 30px;
-
-            background: rgba(255, 255, 255, 0.48);
-
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.65);
 
             box-shadow:
-                0 25px 70px rgba(100, 70, 130, 0.16),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 30px 80px rgba(101, 71, 125, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.75);
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
 
-            animation: cardIn 1s ease forwards;
+            animation:
+                containerIn
+                1s
+                cubic-bezier(.2,.8,.2,1)
+                forwards;
         }
 
-        /* =========================
-           PICTURE
-        ========================== */
-
-        .sticker-wrap {
-            width: 220px;
-            height: 170px;
-
-            margin: 0 auto 24px;
+        .picture-area {
+            position: relative;
+            width: 250px;
+            height: 205px;
+            margin: 0 auto 18px;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            border-radius: 28px;
+            animation:
+                pictureIn
+                1s
+                ease
+                0.15s
+                both;
+        }
+
+        .picture-area::before {
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+            height: 150px;
+
+            border-radius: 50%;
 
             background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, 0.95),
-                    rgba(245, 235, 255, 0.85),
-                    rgba(255, 230, 244, 0.85)
+                radial-gradient(
+                    circle,
+                    rgba(255, 198, 231, 0.75),
+                    rgba(216, 194, 255, 0.45),
+                    transparent 72%
                 );
 
-            box-shadow:
-                0 15px 40px rgba(120, 85, 150, 0.16),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            filter: blur(20px);
 
-            overflow: hidden;
-
-            animation: stickerIn 1s ease 0.25s both;
+            z-index: -1;
         }
 
         .sticker {
             width: 100%;
             height: 100%;
 
-            padding: 10px;
-
             object-fit: contain;
 
             display: block;
+
+            filter:
+                drop-shadow(
+                    0 15px 20px
+                    rgba(111, 73, 130, 0.16)
+                )
+                drop-shadow(
+                    0 0 15px
+                    rgba(255, 220, 244, 0.6)
+                );
+
+            animation:
+                gentleFloat
+                4s
+                ease-in-out
+                infinite;
         }
 
-        /* =========================
-           MAIN TEXT
-        ========================== */
-
         .main-text {
-            font-size: clamp(34px, 8vw, 48px);
+            font-size: clamp(35px, 8vw, 49px);
 
-            line-height: 1.05;
+            line-height: 1.02;
 
             font-weight: 400;
 
-            letter-spacing: -0.5px;
+            letter-spacing: -0.7px;
 
-            margin-bottom: 18px;
+            color: #30233d;
 
-            animation: textIn 1s ease 0.45s both;
+            margin-bottom: 17px;
+
+            text-shadow:
+                0 2px 15px
+                rgba(255, 255, 255, 0.8);
+
+            animation:
+                textIn
+                0.9s
+                ease
+                0.4s
+                both;
         }
 
         .main-text span {
             display: block;
         }
 
-        /* =========================
-           SUBTITLE
-        ========================== */
-
         .subtitle {
             font-family: Arial, sans-serif;
 
-            font-size: 15px;
+            /* একটু বড় করা হয়েছে */
+            font-size: 16px;
 
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
 
-            color: #80698f;
+            /* একটু deeper purple */
+            color: #6b4f7d;
 
             margin-bottom: 28px;
 
-            animation: textIn 1s ease 0.6s both;
+            animation:
+                textIn
+                0.9s
+                ease
+                0.55s
+                both;
         }
-
-        /* =========================
-           BUTTONS
-        ========================== */
 
         .buttons {
             display: flex;
-
             justify-content: center;
+            align-items: center;
 
-            gap: 14px;
+            gap: 13px;
 
-            animation: textIn 1s ease 0.75s both;
+            animation:
+                textIn
+                0.9s
+                ease
+                0.7s
+                both;
         }
 
         button {
-            border: none;
-
-            outline: none;
-
-            min-width: 115px;
+            min-width: 118px;
 
             padding: 13px 25px;
 
             border-radius: 999px;
 
+            border: none;
+            outline: none;
+
             font-family: Arial, sans-serif;
 
-            font-size: 14px;
+            font-size: 13px;
 
             font-weight: 600;
 
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
 
             cursor: pointer;
 
             transition:
                 transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
+                box-shadow 0.25s ease;
         }
 
         .yes {
+            color: white;
+
             background:
                 linear-gradient(
                     135deg,
-                    #d9b8ff,
-                    #f2a8d2
+                    #caa6ff,
+                    #e8a3d0
                 );
 
-            color: white;
-
             box-shadow:
-                0 10px 25px rgba(190, 130, 210, 0.3);
-        }
-
-        .no {
-            background: rgba(255, 255, 255, 0.8);
-
-            color: #8b718f;
-
-            border: 1px solid rgba(190, 160, 205, 0.35);
-
-            box-shadow:
-                0 8px 20px rgba(130, 100, 150, 0.1);
-        }
-
-        button:hover {
-            transform: translateY(-3px);
+                0 10px 28px
+                rgba(180, 125, 210, 0.28);
         }
 
         .yes:hover {
+            transform: translateY(-3px);
+
             box-shadow:
-                0 14px 30px rgba(190, 130, 210, 0.4);
+                0 15px 35px
+                rgba(180, 125, 210, 0.38);
+        }
+
+        .no {
+            color: #80698f;
+
+            background:
+                rgba(255, 255, 255, 0.55);
+
+            border:
+                1px solid
+                rgba(180, 150, 200, 0.25);
+
+            box-shadow:
+                0 8px 22px
+                rgba(120, 90, 140, 0.08);
         }
 
         .no:hover {
-            background: white;
+            transform: translateY(-3px);
+
+            background:
+                rgba(255, 255, 255, 0.8);
         }
 
         button:active {
             transform: scale(0.96);
         }
 
-        /* =========================
-           ANIMATIONS
-        ========================== */
-
-        @keyframes cardIn {
+        @keyframes containerIn {
             from {
                 opacity: 0;
-                transform: translateY(25px) scale(0.96);
+                transform:
+                    translateY(25px)
+                    scale(0.96);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform:
+                    translateY(0)
+                    scale(1);
             }
         }
 
-        @keyframes stickerIn {
+        @keyframes pictureIn {
             from {
                 opacity: 0;
-                transform: translateY(-15px) scale(0.9);
+                transform:
+                    translateY(-20px)
+                    scale(0.88);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes gentleFloat {
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-7px);
             }
         }
 
         @keyframes textIn {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform:
+                    translateY(14px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform:
+                    translateY(0);
             }
         }
 
-        /* =========================
-           SMALL PHONES
-        ========================== */
+        @keyframes float {
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+
+                opacity: 0.35;
+            }
+
+            50% {
+                transform:
+                    translateY(-14px);
+
+                opacity: 0.9;
+            }
+        }
 
         @media (max-height: 650px) {
 
             .container {
-                padding: 22px 20px 25px;
+                padding:
+                    20px
+                    20px
+                    25px;
             }
 
-            .sticker-wrap {
-                width: 175px;
-                height: 125px;
+            .picture-area {
+                width: 190px;
+                height: 145px;
 
-                margin-bottom: 18px;
+                margin-bottom: 12px;
             }
 
             .main-text {
                 font-size: 32px;
 
-                margin-bottom: 12px;
+                margin-bottom: 10px;
             }
 
             .subtitle {
-                margin-bottom: 18px;
+                margin-bottom: 17px;
+            }
+
+            button {
+                padding:
+                    11px
+                    22px;
             }
         }
     </style>
@@ -360,10 +472,18 @@
 
 <body>
 
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="glow three"></div>
+
+    <div class="sparkle s1"></div>
+    <div class="sparkle s2"></div>
+    <div class="sparkle s3"></div>
+    <div class="sparkle s4"></div>
+
     <main class="container">
 
-        <!-- Picture -->
-        <div class="sticker-wrap">
+        <div class="picture-area">
 
             <img
                 class="sticker"
@@ -373,8 +493,6 @@
 
         </div>
 
-
-        <!-- Main Message -->
         <div class="main-text">
 
             <span>I have a little</span>
@@ -383,14 +501,10 @@
 
         </div>
 
-
-        <!-- Subtitle -->
         <div class="subtitle">
             Wanna see it?
         </div>
 
-
-        <!-- Buttons -->
         <div class="buttons">
 
             <button
@@ -411,19 +525,19 @@
 
     </main>
 
-
     <script>
 
         function goYes() {
 
-            window.location.href = "anniversary.html";
+            window.location.href =
+                "anniversary.html";
 
         }
 
-
         function goNo() {
 
-            window.location.href = "no.html";
+            window.location.href =
+                "no.html";
 
         }
 
