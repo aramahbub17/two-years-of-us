@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Really? 😭</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            inset: 0;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            color: #50385f;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    #fff8fc 0%,
+                    #f4e8f7 35%,
+                    #dfcbed 68%,
+                    #cbb3df 100%
+                );
+        }
+
+        /* Soft background glow */
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+
+            border-radius: 50%;
+
+            filter: blur(60px);
+
+            pointer-events: none;
+        }
+
+        body::before {
+            width: 260px;
+            height: 260px;
+
+            top: -70px;
+            left: -70px;
+
+            background: rgba(216, 181, 232, .55);
+        }
+
+        body::after {
+            width: 280px;
+            height: 280px;
+
+            right: -90px;
+            bottom: -90px;
+
+            background: rgba(247, 190, 218, .5);
+        }
+
+        /* Main */
+
+        .page {
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 18px;
+
+            animation: pageIn .9s ease forwards;
+        }
+
+        .card {
+            width: min(92vw, 520px);
+            min-height: 650px;
+
+            padding: 35px 25px 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, .66);
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            border-radius: 38px;
+
+            box-shadow:
+                0 25px 70px rgba(88, 57, 105, .20),
+                inset 0 1px 0 rgba(255,255,255,.95);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            position: relative;
+        }
+
+        /* Top heart */
+
+        .top-heart {
+            font-size: 27px;
+
+            color: #a77ab8;
+
+            margin-bottom: 15px;
+
+            animation:
+                fadeDown .8s ease both,
+                softBeat 2.5s ease-in-out 1s infinite;
+        }
+
+        /* Message */
+
+        .message {
+            font-family: "Times New Roman", Times, serif;
+
+            font-size: clamp(34px, 8vw, 48px);
+
+            line-height: 1.05;
+
+            font-weight: 700;
+
+            color: #583768;
+
+            letter-spacing: .3px;
+
+            animation: shakeIn .8s ease .15s both;
+        }
+
+        .message span {
+            display: block;
+
+            color: #8a5b98;
+
+            margin-top: 7px;
+        }
+
+        /* Divider */
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            width: 170px;
+
+            gap: 10px;
+
+            margin: 22px 0 12px;
+
+            color: #ad7abb;
+
+            animation: fadeUp .8s ease .3s both;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background: #c9a6d3;
+        }
+
+        .divider span {
+            font-size: 18px;
+        }
+
+        /* Sticker */
+
+        .sticker {
+            width: min(360px, 80vw);
+
+            height: auto;
+
+            object-fit: contain;
+
+            margin-top: 5px;
+
+            filter:
+                drop-shadow(
+                    0 15px 18px rgba(83, 54, 99, .17)
+                );
+
+            animation:
+                stickerIn 1s cubic-bezier(.2,.8,.2,1) .35s both,
+                stickerFloat 4s ease-in-out 1.4s infinite;
+        }
+
+        /* Try again */
+
+        .try-again {
+            margin-top: 8px;
+
+            min-width: 185px;
+            height: 55px;
+
+            padding: 0 28px;
+
+            border-radius: 30px;
+
+            border: 1px solid rgba(126, 86, 143, .3);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #caa0d9,
+                    #b989ca
+                );
+
+            color: white;
+
+            font-family: "Times New Roman", Times, serif;
+
+            font-size: 21px;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(111, 71, 128, .22);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+            animation: fadeUp .9s ease .65s both;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .try-again:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 30px rgba(111, 71, 128, .30);
+        }
+
+        .try-again:active {
+            transform: scale(.94);
+        }
+
+        /* Tiny text */
+
+        .tiny {
+            margin-top: 14px;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            color: #9875a3;
+
+            opacity: .75;
+
+            animation: fadeUp .9s ease .8s both;
+        }
+
+        /* Animations */
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shakeIn {
+            0% {
+                opacity: 0;
+                transform: scale(.75);
+            }
+
+            70% {
+                transform: scale(1.04);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes stickerIn {
+            from {
+                opacity: 0;
+                transform: scale(.55) translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes stickerFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes softBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        /* Smaller screens */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 12px;
+            }
+
+            .card {
+                width: 94vw;
+
+                min-height: 620px;
+
+                padding: 28px 18px;
+                border-radius: 32px;
+            }
+
+            .message {
+                font-size: clamp(32px, 9vw, 43px);
+            }
+
+            .sticker {
+                width: min(330px, 82vw);
+            }
+
+            .try-again {
+                height: 52px;
+
+                min-width: 175px;
+
+                font-size: 20px;
+            }
+        }
+
+        @media (max-height: 720px) {
+
+            .card {
+                min-height: 560px;
+
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .top-heart {
+                margin-bottom: 8px;
+            }
+
+            .message {
+                font-size: 35px;
+            }
+
+            .divider {
+                margin: 14px 0 5px;
+            }
+
+            .sticker {
+                width: 245px;
+            }
+
+            .try-again {
+                height: 48px;
+                margin-top: 3px;
+            }
+
+            .tiny {
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="card">
+
+            <div class="top-heart">♡</div>
+
+            <h1 class="message">
+                HOW DARE YOU
+                <span>CLICK NO 😤</span>
+            </h1>
+
+            <div class="divider">
+                <span>♡</span>
+            </div>
+
+            <!-- BIG STICKER -->
+            <img
+                class="sticker"
+                src="surprise-cats.png"
+                alt="Cute cats"
+            >
+
+            <button
+                class="try-again"
+                onclick="tryAgain()"
+            >
+                ↻ &nbsp; TRY AGAIN
+            </button>
+
+            <div class="tiny">
+                You really clicked NO...
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function tryAgain() {
+
+            document.body.style.transition =
+                "opacity .7s ease, transform .7s ease";
+
+            document.body.style.opacity = "0";
+
+            document.body.style.transform =
+                "translateX(30px)";
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "unlocked.html";
+
+            }, 700);
+        }
+
+    </script>
+
+</body>
+</html>
